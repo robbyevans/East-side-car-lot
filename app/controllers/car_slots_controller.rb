@@ -1,0 +1,2 @@
+class CarSlotsController < ApplicationController
+end
