@@ -1,6 +1,17 @@
-function Nav(){
-    return(
-        <>
+function Nav({ onLogout }) {
+    function handleLogout() {
+        fetch("/logout", {
+          method: "DELETE",
+        }).then(() => onLogout());
+      }
+    
+      return (
+        <header>
+          <button onClick={handleLogout}>Logout</button>
+        </header>
+      );
+    }
+    
 
         <nav className="navbar navbar-light bg-light">
         <div className="container-fluid">
@@ -16,10 +27,8 @@ function Nav(){
     </a>
     </div>
     </nav>
-        </>
+
         
-    )
-  
-  }
+
   
   export default Nav
