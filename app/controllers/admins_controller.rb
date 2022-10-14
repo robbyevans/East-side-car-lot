@@ -4,14 +4,17 @@ class AdminsController < ApplicationController
         render json: Admin.all, status: :ok
     end
     def create
-        admin = Admin.find_by(name: params[:name])
-        if admin&.authenticate(params[:password])
-            session[:admin_id] = admin.id
-        render json: admin, status: :created
+        # byebug
+        user = User.new(user_params)
+        if user.valid? && params[:password]
+          user.save!
+          session[:user_id] = user.id
+          render json: user, status: :created
         else
-            render json: {error: {login: "invalid username or password"}},status: :unauthorized
-        end
-    end
-    
+          render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+  
         
+            render json: {error: {login: "invalid name or password"}},status: :unauthorized
+        end
+    end        
 end

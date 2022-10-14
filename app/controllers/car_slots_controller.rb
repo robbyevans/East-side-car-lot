@@ -25,7 +25,7 @@ class CarSlotsController < ApplicationController
       return render json: {errors: ["Not authorized"]}, status: :unauthorized unless session.include? :user_id
   end
 
-  def recipe_params
+  def car_slot_params
       params.permit(:title, :instructions, :minutes_to_complete)
   end
 end

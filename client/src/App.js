@@ -1,50 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
-import Nav from './components/Navbar';
-import Home from './components/Home';
-import Footer from './components/Footer';
-import IcecreamList from './components/IcecreamList';
-import {Routes, Route} from 'react-router-dom'
-import { useState,useEffect } from 'react';
+import React from "react";
+// import AboutPage from "./pages/AboutPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import Slots from "./pages/Slots";
+// import NavBar from "./components/NavBar";
+import Layout from "./pages/Layout";
+import SignUpPage from "./pages/SignUpPage";
+import About from "./pages/About"
+import SignUpForm from "./components/SignUpForm";
 
-
-function App() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    fetch("/me").then((response) => {
-      if (response.ok) {
-        response.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
-
-  if (!user) {
-    return <h2>Welcome, {user.username}!</h2>;
-  } else {
-    return <Login onLogin={setUser} />;
-  }
-}
-
-
-
-   [];
+const App = () => {
   return (
-    
     <>
-      <NavBar user={user} setUser={setUser} />
-      <main>
-        <Switch>
-          <Route path="/new">
-            <NewRecipe user={user} />
+      <Router>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignUpForm/>} />
           </Route>
-          <Route path="/">
-            <RecipeList />
-          </Route>
-        </Switch>
-      </main>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/slots" element={<Slots />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </Router>
     </>
   );
-}
+};
 
 export default App;
