@@ -9,11 +9,13 @@ import Layout from "./pages/Layout";
 import SignUpPage from "./pages/SignUpPage";
 import About from "./pages/About"
 import SignUpForm from "./components/SignUpForm";
+import NavBar from "./components/NavBar";
 
 const App = () => {
   return (
     <>
       <Router>
+
         <Routes>
           <Route element={<Layout />}>
             <Route path="/login" element={<LoginPage />} />

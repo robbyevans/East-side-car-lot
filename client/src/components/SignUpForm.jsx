@@ -23,16 +23,17 @@ const SignUpForm = () => {
 	function handleSubmit(e) {
 		e.preventDefault();
 		setIsLoading(true);
-		fetch("/login", {
+		fetch("/users", {
 		  method: "POST",
 		  headers: {
 			"Content-Type": "application/json",
 		  },
-		  body: JSON.stringify({ name, password, passwordConfirmation, email, carNumber }),
+		  body: JSON.stringify({ name, password, passwordConfirmation, email}),
 		}).then((r) => {
 		  setIsLoading(false);
 		  if (r.ok) {
 			r.json().then((user) => console.log(user));
+			navigate("/slots")
 		  } else {
 			r.json().then((err) => console.log(err.errors));
 		  }
@@ -105,6 +106,7 @@ const SignUpForm = () => {
 						<button
 							className='px-5 py-2 bg-red-700 rounded-full text-white text-xl'
 							type='submit'
+							onClick={handleSubmit}
 						>
 							Create Account
 						</button>

@@ -23,6 +23,9 @@ const NavBar = () => {
             <li className="px-3">
               <Link to="/signup">Sign up</Link>
             </li>
+            <li className="px-3">
+              <Link to="/slots">slots</Link>
+            </li>
           </ul>
         </div>
       </nav>
