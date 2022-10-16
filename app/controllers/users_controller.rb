@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     def create
         # byebug
-        user = User.new(user_params)
+        user = User.create(user_params)
         if user.valid? && params[:password] == params[:password_confirmation]
           user.save!
           session[:user_id] = user.id
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:name, :email, :password, :car_number, :password_confirmation)
+        params.permit(:name, :email, :password, :password_confirmation)
     end
 
 end
