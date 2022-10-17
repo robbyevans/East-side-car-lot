@@ -48,7 +48,7 @@ const About = () => {
               </div>
               <div id="contain" class="leading-8 mb-10 text-lg font-light">
                 <ul>
-                  <li>24 hours of support</li>
+                  <li className="list">24 hours of support</li>
                   <li>good responce incase of emergency</li>
                   <li>good customer services</li>
                   <li>safety at all times</li>
